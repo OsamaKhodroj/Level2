@@ -19,7 +19,6 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            string data  = _configuration["PaymentKey"];
             return View();
         }
 
