@@ -2,6 +2,7 @@
 using Domains.Entities;
 using Domains.Enums;
 using Domains.Interfaces;
+using Infrstractures;
 using Mapster;
 
 namespace Services;
@@ -32,10 +33,13 @@ public class UserService : IUser
             var result = DataValidation(user, false);
             if (result)
             {
+                user.Password = Encryption.Hash(user.Password);
+
                 _userStore.Add(user);
+
                 return OpStatusEnum.Success;
             }
-            return OpStatusEnum.Error;
+            return OpStatusEnum.AlreadyExists;
         }
         catch (Exception)
         {
@@ -117,7 +121,8 @@ public class UserService : IUser
     {
         try
         {
-            var users = _userStore.Where(u => !u.IsDeleted).ToList();
+            var users = _userStore.Where(u => !u.IsDeleted)
+                .ToList();
             return users;
         }
         catch (Exception)
@@ -126,8 +131,6 @@ public class UserService : IUser
             throw;
         }
     }
-
-
 
     private bool DataValidation(User data, bool isUpdate)
     {
@@ -144,6 +147,10 @@ public class UserService : IUser
         if (string.IsNullOrEmpty(data.Password))
             return false;
         if (data.UserType == UserTypeEnum.None)
+            return false;
+
+        var isUserExists = _userStore.Any(q => q.EmailAddress == data.EmailAddress);
+        if (isUserExists)
             return false;
 
         return true;

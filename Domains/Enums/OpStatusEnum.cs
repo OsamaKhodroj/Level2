@@ -12,6 +12,7 @@ namespace Domains.Enums
         Success = 1,
         Error = 2,
         NotFound = 3,
-        ValidationError = 4
+        ValidationError = 4,
+        AlreadyExists = 5
     }
 }
