@@ -50,7 +50,10 @@ public class UserService : IUser
 
     private int GetGeneratedUserId()
     {
-        throw new NotImplementedException();
+        if (_userStore == null || !_userStore.Any() || _userStore.Count == 0)
+            return 1;
+
+        return _userStore.Max(u => u.Id) + 1;
     }
 
     /// <summary>
@@ -81,7 +84,7 @@ public class UserService : IUser
             throw;
         }
     }
-     
+
     /// <summary>
     /// This method retrieves a user by their ID from the in-memory user store.
     /// </summary>
@@ -128,6 +131,7 @@ public class UserService : IUser
         try
         {
             var users = _userStore.Where(u => !u.IsDeleted)
+                .OrderByDescending(q => q.Id)
                 .ToList();
             return users;
         }
