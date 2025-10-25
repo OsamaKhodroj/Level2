@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form asp-controller="Users" asp-action="AddUserInfo" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label for="FullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="FullName" name="FullName" required placeholder="Enter user full name">
+            </div>
+            <div class="mb-3">
+                <label for="EmailAddress" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="EmailAddress" name="EmailAddress" required placeholder="Enter user email address" />
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" required placeholder="Enter user password" />
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Add User" />
+</form>

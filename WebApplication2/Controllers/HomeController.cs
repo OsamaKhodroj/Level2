@@ -1,7 +1,8 @@
-using System.Diagnostics;
+//using System.Diagnostics;
 using Domains.Dtos.User;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+using System.Diagnostics;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
@@ -21,24 +22,6 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
-            var user = new UserService();
-
-            //var userInfo1 = new AddUserRequest();
-            //userInfo1.FullName = "John Doe";
-            //userInfo1.EmailAddress = "oo@oo.com";
-            //userInfo1.Password = "123456";
-            //userInfo1.UserType = Domains.Enums.UserTypeEnum.Admin;
-
-            var result = user.Add(new AddUserRequest()
-            {
-                EmailAddress = "aa@q.com",
-                FullName = "Jane Smith",
-                Password = "123456",
-                UserType = Domains.Enums.UserTypeEnum.Admin
-            });
-
-
             return View();
         }
 
