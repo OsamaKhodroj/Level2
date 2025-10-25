@@ -34,6 +34,7 @@ public class UserService : IUser
             if (result)
             {
                 user.Password = Encryption.Hash(user.Password);
+                user.Id = GetGeneratedUserId();
 
                 _userStore.Add(user);
 
@@ -46,7 +47,12 @@ public class UserService : IUser
             throw;
         }
     }
-     
+
+    private int GetGeneratedUserId()
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// This method updates an existing user's details in the in-memory user store after validating the input data.
     /// </summary> 
