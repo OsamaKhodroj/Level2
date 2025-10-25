@@ -7,9 +7,20 @@ namespace WebApplication2.Controllers
     public class UsersController : Controller
     {
         [HttpGet]
-        public IActionResult AddUser()
+        public IActionResult AddUser(int? id)
         {
-            return View();
+            var userService = new UserService();
+            var model = new UserUpdateMode();
+
+            if (id.HasValue && id.Value > 0)
+            {
+                model.UserInfo =  userService.GetById(id.Value);
+                model.IsUpdateMode = true;
+            }
+
+            model.Users = userService.GetAll(); 
+
+            return View(model);
         }
 
 
@@ -20,9 +31,28 @@ namespace WebApplication2.Controllers
 
             var userService = new UserService();
             var result = userService.Add(request);
+            string message = string.Empty;
 
 
-            return View("AddUser");
+            switch (result)
+            { 
+                case Domains.Enums.OpStatusEnum.Success:
+                    message = "User added sucessfully!";
+                    break;
+                case Domains.Enums.OpStatusEnum.Error:
+                    message = "Error happnded when add new user :(";
+                    break;  
+                case Domains.Enums.OpStatusEnum.AlreadyExists:
+                    message = "The user already exists:(";
+                    break;
+                default:
+                    message = "Unknown Error !";
+                    break;
+            } 
+             
+            TempData["UserMessage"] = message;
+           
+            return Redirect("AddUser");
          }
     }
 }

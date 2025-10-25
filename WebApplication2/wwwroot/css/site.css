@@ -1,5 +1,5 @@
 html {
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -15,7 +15,7 @@ html {
 html {
     position: relative;
     min-height: 100%;
-    font-family: "Cairo", sans-serif; 
+    font-family: "Cairo", sans-serif;
 }
 
 body {
@@ -33,78 +33,12 @@ body {
 }
 
 
-.mainNotify { 
-    width: 50%;
-    height: 60px;
-    border-radius: 5px;
-    box-shadow: 1px 2px 6px 2px #8ec0e3;
-} 
-.infoMainNotify {
-    background-color: #d5effc;
-    border-left: 5px solid #70c5fe;
-}
-.sucessMainNotify {
-    background-color: #c4f2d6;
-    border-left: 5px solid #2ed474;
+.edit {
+    color: #590eb7;
+    cursor: pointer;
 }
 
-
-
-.leftNotify {
-    width: 90%;
-    float: left;
-    height: 60px;
-    line-height: 60px;
-    padding-left: 20px;
-}
- 
-.rightNotify {
-    width: 10%;
-    float: right;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 20px;
-    font-weight: 700; 
-    border-radius: 0px 10px 10px 0px;
-}
-.infoRightColor {
-    color: #1b8bd7;
-    background-color: #70c5fe;
-}
-.sucessRightColor {
-    color: #25aa65;
-    background-color: #93e9b8;
-}
-
-
-.checkStyle {
-    font-size: 30px !important;
-    vertical-align: middle;
-}
-.infoCheckStyle {
-    color: #70c4fd;
-}
-.sucessCheckStyle {
-    color: #24a95f;
-}
-
-
-
-.txtStyle {
-    font-size: 17px; 
-
-}
-.infoTxtStyle {
-    color: #00a2e3;
-}
-.sucessTxtStyle {
-    color: #24a95f;
-}
- 
-
-
-.bgColor{
-    background-color:red;
-    color:#fff;
+.delete {
+    color: #ff0a0a;
+    cursor: pointer;
 }
