@@ -152,14 +152,14 @@ public class UserService : IUser
 
         if (string.IsNullOrEmpty(data.FullName))
             return false;
-        if (string.IsNullOrEmpty(data.EmailAddress))
+        if (string.IsNullOrEmpty(data.EmailAddress) )
             return false;
-        if (string.IsNullOrEmpty(data.Password))
+        if (string.IsNullOrEmpty(data.Password) && !isUpdate)
             return false;
-        if (data.UserType == UserTypeEnum.None)
+        if (data.UserType == UserTypeEnum.None && !isUpdate)
             return false;
 
-        var isUserExists = _userStore.Any(q => q.EmailAddress == data.EmailAddress);
+        var isUserExists = _userStore.Any(q => q.EmailAddress == data.EmailAddress && q.Id != data.Id);
         if (isUserExists)
             return false;
 
