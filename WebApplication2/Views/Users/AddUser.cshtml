@@ -16,7 +16,8 @@
 }
 
 
-<form asp-controller="Users" asp-action="AddUserInfo" method="post">
+<form asp-controller="Users" asp-action="SaveUserInfo" method="post">
+    <input type="hidden" name="Id" id="Id" value="@Model?.UserInfo?.Id" />
     <div class="row">
         <div class="col-md-12">
             <div class="mb-3">
@@ -69,7 +70,7 @@
                                 </span>
                             </a>
 
-                            <span class="material-symbols-outlined delete">
+                            <span class="material-symbols-outlined delete" onclick="funDeleteUser('@item.Id')">
                                 cancel
                             </span>
                         </td>
