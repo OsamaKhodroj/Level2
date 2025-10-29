@@ -42,3 +42,8 @@ body {
     color: #ff0a0a;
     cursor: pointer;
 }
+
+
+.fa-8x {
+    font-size: 10em !important;
+}

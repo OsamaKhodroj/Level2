@@ -17,6 +17,10 @@ public class UserService : IUser
         {
             _userStore = new List<User>();
         }
+
+        string username = "Osama";
+
+        var wordCount = username.WordCount();
     }
 
 
@@ -152,7 +156,7 @@ public class UserService : IUser
 
         if (string.IsNullOrEmpty(data.FullName))
             return false;
-        if (string.IsNullOrEmpty(data.EmailAddress) )
+        if (string.IsNullOrEmpty(data.EmailAddress))
             return false;
         if (string.IsNullOrEmpty(data.Password) && !isUpdate)
             return false;

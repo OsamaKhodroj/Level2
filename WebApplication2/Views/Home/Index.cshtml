@@ -1,10 +1,12 @@
-﻿@{
+﻿@using WebApplication2.Controllers
+@{
     ViewData["Title"] = "Home Page";
+
+    var countries = (IEnumerable<Country>)ViewBag.CountryList;
 }
- 
+
 
 <div id="div1" style="width:200px;height:500px;border:1px solid #ccc;">
-
 </div>
 
 <br />
@@ -14,16 +16,22 @@
 <input type="button" value="Change Color to Yellow" onclick="funChangeColor('yellow')" />
 
 
-<video width="320" height="240" controls>
-    <source src="movie.mp4" type="video/mp4">
-    <source src="movie.ogg" type="video/ogg">
-    Your browser does not support the video tag.
-</video>
 
-<audio controls>
-    <source src="audio.mp3" type="audio/mpeg">
-    <source src="audio.ogg" type="audio/ogg">
-    Your browser does not support the audio element.
-</audio>
+ 
+<a asp-controller="Home" asp-action="Index" asp-route-id="10">Go to About Page</a>
+<a href="/Home/Index/10">Go to About Page</a>
+ 
 
-<input type="date" />
+
+<select class="form-select">
+    @foreach (var item in countries)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+
+
+
+@section Scripts {
+    <script src="~/js/index.js"></script>
+}
